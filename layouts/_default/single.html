@@ -27,7 +27,7 @@
 		            {{ .Site.Title }}
 			{{ end }} 
 			on 
-			{{ .Date.Format "Monday, January 2, 2006" }}
+			{{ .Date.Format "02-01-2006" }}
                         {{ if .Site.Params.page_view_conter }}
                             {{ partial "page_view_counter.html" . }}
                         {{ end }}
@@ -53,7 +53,7 @@
 
                 {{ if not (eq (.Param "showtoc") false) }}
                 <header>
-                    <h2>TOC</h2>
+                    <b>{{T "toc"}}</b>
                 </header>
                 {{.TableOfContents}}
                 {{ end }}
@@ -68,13 +68,12 @@
                     {{ if .PrevInSection }}
                     <li class="previous">
                         <a href="{{ .PrevInSection.URL }}" data-toggle="tooltip" data-placement="top" title="{{ .PrevInSection.Title}}">&larr;
-                            Previous Post</a>
+                            {{T "previousPost"}}</a>
                     </li>
                     {{ end }}
                     {{ if .NextInSection }}
                     <li class="next">
-                        <a href="{{ .NextInSection.URL }}" data-toggle="tooltip" data-placement="top" title="{{ .NextInSection.Title}}">Next
-                            Post &rarr;</a>
+                        <a href="{{ .NextInSection.URL }}" data-toggle="tooltip" data-placement="top" title="{{ .NextInSection.Title}}">{{T "nextPost"}} &rarr;</a>
                     </li>
                     {{ end }}
                 </ul>
@@ -92,7 +91,7 @@
                 {{ if .Site.Params.featured_tags }}
                 <section>
                     <hr class="hidden-sm hidden-xs">
-                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <h5><a href="/tags/">{{T "featuredTags"}}</a></h5>
                     <div class="tags">
                         {{ $featured_condition_size := .Site.Params.featured_condition_size }}
                         {{ range $name, $taxonomy := .Site.Taxonomies.tags }}
@@ -110,12 +109,7 @@
                 {{ if .Site.Params.friends }}
                 <section>
                     <hr>
-                    <h5>FRIENDS</h5>
-                    <ul class="list-inline">
-                        {{ range .Site.Params.friend_link }}
-                        <li><a target="_blank" href="{{.href}}">{{.title}}</a></li>
-                        {{ end }}
-                    </ul>
+                    <br/>
                 </section>
                 {{ end }}
             </div>
